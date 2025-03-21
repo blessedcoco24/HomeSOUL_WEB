@@ -1,0 +1,30 @@
+.orders{
+    margin: 100px 10px;
+}
+
+
+
+
+.product table{
+    border: 1px solid black;
+    margin: 10px;
+    width: 90%;
+
+}
+.product table tr td{
+    padding: 10px;
+}
+
+#total{
+    text-align: right;
+}
+.note{
+    font-weight: lighter;
+}
+
+.pay{
+    font-weight: bold;
+    text-align: right;
+    margin-right: 50px;
+}
+

@@ -1,0 +1,72 @@
+<div class="spacing">
+<div class = "product-page">
+<div class="product-grid" *ngIf="pagedProducts.length > 0; else noResults">
+    <div *ngFor="let product of pagedProducts" class="product-card">
+        <div class="product">
+            <div class="product-img"><img [src]="product['Ảnh sản phẩm'][0]" [alt]="product['Tên sản phẩm']"></div>
+            <div class="product-name">
+            <a  style="cursor:pointer; ">{{ product["Tên sản phẩm"] }}</a></div>
+       <div class="rate">
+        <p>{{ product["Đánh giá"] }}  </p>⭐
+       </div>
+       <div class="price-tag">{{ product["Giá hiện tại"] }}</div>    
+     </div>
+    </div>
+</div>
+    <br/>
+    <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 0"><img src="assets\icons\st-arrow-prev.png"></button>
+        <button (click)="nextPage()"><img src="assets\icons\st-arrow-prev-next.png"></button> 
+    </div>
+</div>
+
+
+<div>
+ <!-- Thông báo khi không có kết quả tìm kiếm -->
+ <ng-template #noResults>
+    <div class="no-results">
+        <img src="assets/icons/ảnh đèn 1.png"><br/>
+        <b>Rất tiếc!</b><br/>
+      Chúng tôi không tìm thấy sản phẩm này.
+    </div>
+  </ng-template>
+
+</div>
+
+<div class="filter-panel">
+    <div class="filter-container">
+        <select id="sort-filter" (change)="setSortOrder($event)">
+            <option value="discount">Giảm giá</option>
+            <option value="newest">Mới nhất</option>
+            <option value="asc" >Giá thấp -  cao</option>
+            <option value="desc">Giá cao -  thấp</option>
+            <option value="best-seller">Bán chạy</option>
+        </select>
+    </div>
+    
+    <p class="fil">Danh mục</p>
+    <div class="checkbox-container">
+        <div *ngFor="let category of Object.keys(categoryNames)">
+            <input type="checkbox" [value]="category" (change)="onFilterChange(category, $event)">
+            <label>{{ categoryNames[category] }}</label>
+          </div>
+    </div>
+    <br/>
+    <p class="fil">Màu sắc</p>
+    <div class="checkbox-container">
+        <label><input type="checkbox" class="color-checkbox black"> Đen</label>
+    <label><input type="checkbox" class="color-checkbox blue"> Xanh dương</label>
+    <label><input type="checkbox" class="color-checkbox red"> Đỏ</label>
+    <label><input type="checkbox" class="color-checkbox green"> Xanh lá</label>
+    <label><input type="checkbox" class="color-checkbox yellow"> Vàng</label>
+    <label><input type="checkbox" class="color-checkbox brown"> Nâu</label>
+    </div><br/>
+    <p class="fil">Giá</p>
+    <div class="checkbox-container">
+        <label *ngFor="let range of priceRanges">
+            <input type="checkbox" (change)="togglePriceFilter(range)" />
+            {{ range.label }}
+          </label>
+        </div>
+</div> 
+</div>

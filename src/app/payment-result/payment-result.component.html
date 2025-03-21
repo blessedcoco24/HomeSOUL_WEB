@@ -1,0 +1,19 @@
+<div class="pay-result">
+    <div class="success" *ngIf="paymentSuccess">
+        <div class="icon-order">
+            <img src="assets/icons/paysuccess.png">
+        </div>
+        <p>THANH TOÁN THÀNH CÔNG</p>
+        <button (click)="goToOrdersPage()">XEM ĐƠN HÀNG</button>
+    </div>
+    <div class="fail"  *ngIf="!paymentSuccess">
+        <div class="icon-order">
+            <img src="assets/icons/fail.png">
+        </div>
+        <p>THANH TOÁN KHÔNG THÀNH CÔNG</p>
+        <p class="loi">LỖI: GIAO DỊCH HẾT HẠN</p>
+        <p class="note">Vui lòng quay về trang trước để thực hiện lại giao dịch</p>
+    </div>
+</div>
+
+
