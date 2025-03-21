@@ -1,0 +1,37 @@
+.ordered{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+p{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+}
+button{
+    border: 1px solid black;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.note{
+    font-weight: lighter;
+}
+
+.icon-order img{
+    width: 250px;
+    height: auto;
+}
+
+p a{
+    color: #2F4156;
+    border: 1px solid #2F4156;
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+

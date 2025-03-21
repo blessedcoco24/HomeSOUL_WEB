@@ -1,0 +1,72 @@
+<div class = "title">
+    <h3><b>SẢN PHẨM ĐÃ CHỌN</b> </h3>
+</div>
+<div class="container">
+    <!-- Giỏ hàng -->
+    <div class="cart" align="left">
+  
+      <div *ngIf="selectedItems.length === 0">
+        <p>Không có sản phẩm nào trong đơn hàng!</p>
+      </div>
+  
+      <div *ngFor="let item of selectedItems">
+        <div class="product">
+          <img [src]="item.image" [alt]="item.name">
+          <div class="info">
+            <h3>{{ item.name }}</h3>
+            <p>Màu sắc: {{ item.color }}</p>
+            <p>Số lượng: {{ item.quantity }}</p>
+            <p>Đơn giá: {{ item.price | number }} đồng</p>
+            <p><b>Tổng: {{ item.totalPrice | number }} đồng</b></p>
+          </div>
+        </div>
+      </div>
+  
+     
+      
+    </div>
+  
+    <!-- Thông tin khách hàng -->
+    <div class="customer-info">
+      <h3>THÔNG TIN GIAO HÀNG</h3>
+      <form>
+        <label for="name">Họ và Tên:</label>
+        <input type="text" id="name" placeholder="Nguyễn Văn A">
+  
+        <label for="phone">Số điện thoại:</label>
+        <input type="tel" id="phone" placeholder="(+84)123456789">
+
+        <label for  = "email">Email: </label>
+        <input type = "email" id = "email" placeholder="abc@gmail.com">
+
+        <label for="address">Địa chỉ:</label>
+        <textarea id="address" placeholder="Số nhà, tên đường, phường/thôn, xã, quận/huyện, thành phố/tỉnh"></textarea>
+  
+      </form>
+    </div>
+  </div>
+  <div align="center">
+    <div class="totalprice">
+      <p><b>Tạm tính:</b> {{ getSubtotal() | number }} đồng</p>
+  
+      <p>
+        <label for="voucher"><b>Chọn mã giảm giá:</b></label>
+        <select id="voucher" [(ngModel)]="selectedVoucher">
+          <option *ngFor="let voucher of vouchers" [ngValue]="voucher">
+            {{ voucher.description }}
+          </option>
+        </select>
+      </p>
+  
+      <p><b>Giảm giá:</b> {{ getDiscountAmount() | number }} đồng</p>
+      <p><b>Phí vận chuyển:</b> {{ shippingFee | number }} đồng</p>
+  
+      <p style="color: red"><b>Tổng cộng:</b> {{ getTotalPrice() | number }} đồng</p>
+  
+      <p align="right">
+        <button class="orderbtn" (click)="goToPay()">THANH TOÁN</button>
+      </p>
+    </div>
+  
+  </div>
+  

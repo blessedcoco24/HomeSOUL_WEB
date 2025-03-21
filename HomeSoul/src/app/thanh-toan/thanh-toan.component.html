@@ -1,0 +1,51 @@
+
+<div class="pttt">
+<h2>Phương thức thanh toán</h2>
+<div class="payment-method">
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="payment" value="cod" checked>
+            Thanh toán khi nhận hàng (COD)
+        </label>
+    </div>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="payment" value="bank-transfer" (click)="toggleBankOptions()">
+            Chuyển khoản ngân hàng/Internet Banking<img id="selectedBankImage" class="selected-bank" src="" alt="" style="display:none; height: 30px;">
+        </label>
+        
+    </div>
+    <div class="radio-group">
+        <label>
+            <input type="radio" name="payment" value="e-wallet" (click)="toggleWalletOptions()">
+            Ví điện tử <img id="selectedWalletImage" class="selected-wallet" src="" style="display:none; height: 30px;">
+        </label>
+    </div>
+    <div class="wallet-options" id="walletOptions">
+        <img src="assets\Ewallets\momo.png" (click)="selectWallet('assets/Ewallets/momo.png')">
+        <img src="assets\Ewallets\Zalo.png" (click)="selectWallet('assets/Ewallets/Zalo.png')">
+        <img src="assets\Ewallets\VNpay.png" (click)="selectWallet('assets/Ewallets/Vnpay.png')">
+        <img src="assets\Ewallets\Viettel.png" (click)="selectWallet('assets/Ewallets/Viettel.png')">
+    
+    </div>
+    
+
+    <div class="bank-options" id="bankOptions">
+        <img src="assets\banks\BIDV.png" (click)="selectBank('assets/banks/BIDV.png')">
+        <img src="assets\banks\VCB.png" alt="Vietcombank" (click)="selectBank('assets/banks/VCB.png')">
+        <img src="assets\banks\TCB.png" alt="Techcombank" (click)="selectBank('assets/banks/TCB.png')">
+        <img src="assets\banks\AGR.png" (click)="selectBank('assets/banks/AGR.png')">
+        <img src="assets\banks\Vietin.png" alt="VietinBank" (click)="selectBank('assets/banks/Vietin.png')">
+        <img src="assets\banks\TP.png" (click)="selectBank('assets/banks/TP.png')">
+        <img src="assets\banks\SHB.png" alt="SHB" (click)="selectBank('assets/banks/SHB.png')">
+        <img src="assets\banks\MB.png" alt="MB" (click)="selectBank('assets/banks/MB.png')">
+        <img src="assets\banks\VIB.png" alt="VIB" (click)="selectBank('assets/banks/VIB.png')">
+    </div>
+    <div class="order">
+        <button type="button" (click)="placeOrder()">ĐẶT HÀNG</button></div>
+</div>
+
+
+
+
+</div>

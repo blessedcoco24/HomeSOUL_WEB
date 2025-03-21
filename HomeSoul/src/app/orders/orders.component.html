@@ -1,0 +1,98 @@
+ <!--  <div class="orders">
+  <div class="info">
+        <table>
+            <tr>
+                <td width="250px">Họ và tên</td>
+                <td width="200px">Địa chỉ</td>
+            </tr>
+            <tr>
+                <td>sđt</td>
+                <td>email</td>
+            </tr>
+        </table>
+    </div>
+    <div class="product-container">
+        <div class="product">
+            <table>
+                <tr>
+                    <td width="150px"><img src=""></td>
+                    <td width="300px">
+                        tên sản phẩm<br/>
+                        Màu sắc: 
+                    </td>
+                    <td width="60px">
+                        <br/>
+                        số lượng
+                    </td>
+                    <td width="300px" id="total">Tổng cộng: </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td width="150px"><img src=""></td>
+                    <td width="300px">
+                        tên sản phẩm<br/>
+                        Màu sắc: 
+                    </td>
+                    <td width="60px">
+                        <br/>
+                        số lượng
+                    </td>
+                    <td width="300px" id="total">Tổng cộng: </td>
+                </tr>
+            </table>
+        </div>
+        <div class="note">Vui lòng chuẩn bị đủ tiền thanh toán khi nhận hàng </div>
+        <div class="pay">Thanh toán: </div>
+        
+    </div>-->
+
+<div class="orders">
+    <div class="info">
+        <table>
+            <tr>
+                <td width="250px"><b>Họ và tên</b></td>
+                <td width="200px"><b>Địa chỉ</b></td>
+            </tr>
+            <tr>
+                <td>{{ customerInfo.name }}</td>
+                <td>{{ customerInfo.address }}</td>
+            </tr>
+            <tr>
+                <td><b>SĐT</b></td>
+                <td><b>Email</b></td>
+            </tr>
+            <tr>
+                <td>{{ customerInfo.phone }}</td>
+                <td>{{ customerInfo.email }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="product-container">
+        <div class="product" *ngFor="let item of selectedItems">
+            <table>
+                <tr>
+                    <td width="150px"><img [src]="item.image" width="100"></td>
+                    <td width="300px">
+                        {{ item.name }} <br/>
+                        Màu sắc: {{ item.color }}
+                    </td>
+                    <td width="60px">
+                        {{ item.quantity }}
+                    </td>
+                    <td width="300px" id="total">Tổng cộng: {{ item.totalPrice | number }}₫</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="note">Vui lòng chuẩn bị đủ tiền thanh toán khi nhận hàng</div>
+        <div class="pay">Thanh toán: <b>{{ totalPrice | number }}₫</b></div>
+    </div>
+</div>
+
+
+
+
+
+

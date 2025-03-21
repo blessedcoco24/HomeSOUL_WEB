@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+div{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.title{
+    font-family: 'Source Sans Pro', sans-serif;
+    padding-left: 30px;
+    font-size: 25px;
+    padding-top: 20px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 25px;
+    padding: 20px;
+}
+
+/* Bố cục chính */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Giỏ hàng */
+.cart {
+    width: 55%;
+    background: white;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #B6B6B6;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.product img {
+    width: 175px;
+    height: 175px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.info {
+    flex: 1;
+    text-align: left;
+}
+
+/* Thông tin khách hàng */
+.customer-info {
+    width: 40%;
+    padding: 20px;
+    border: 1px solid #B6B6B6;
+    background: white;
+    margin-top: 10px;
+    margin-bottom: 15px; 
+
+}
+
+.customer-info input,
+.customer-info textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #B6B6B6;
+}
+
+.customer-info button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #2F4156;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.customer-info button:hover {
+    background-color: #444;
+}
+
+/* Tổng thanh toán */
+.totalprice {
+    padding: 15px;
+    border: 1px solid #B6B6B6;
+    text-align: left;
+    width: 90%;
+    margin: 15px;   
+     
+}
+
+select{
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.orderbtn{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #B6B6B6;
+}
+
+.orderbtn:hover{
+    color:  #000000;
+    background-color: #B6B6B6;
+}

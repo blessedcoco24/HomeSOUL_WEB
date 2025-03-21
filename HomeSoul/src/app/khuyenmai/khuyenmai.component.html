@@ -1,0 +1,59 @@
+<div class="banner-container">
+  <div class="slider-container">
+    <div class="slider" [style.transform]="'translateX(' + (-currentIndex * 101) + '%)'">
+        <img *ngFor="let image of images" [src]="image" alt="Slider Image" class="slide">
+    </div>
+    <button (click)="prevSlide()" class="prev"><</button>
+    <button (click)="nextSlide()" class="next">></button>
+</div>
+    <div class="banner-content">
+      <button (click)="goToPage2()" class="view-more-btn">MUA NGAY</button>
+    </div>
+  </div>
+<h3> VOURCHER NGẬP TRÀN</h3>
+<div class="vourcher">
+
+<div *ngFor="let voucher of vouchers" class="voucher-card">
+<div class="item">
+      <p><b>Mã: </b> <strong>{{ voucher.code }}</strong></p>
+      <p> {{ voucher.description }}</p>
+      <p><b>Hạn sử dụng:</b> {{ voucher.expiry_date }}</p>
+      <div class="save"> <button (click)="saveVoucher(voucher)">Lưu</button></div>
+     
+    </div>
+</div>
+</div>
+<div class="banner2">
+  <h3>SALE SỐC THÁNG 3</h3>
+    <div class="product-grid" >
+      <div *ngFor="let product of pagedProducts" class="product-card">
+       <div class="product">
+          <table>
+              <tr>
+                  <td>
+                      <div class="product-img"><img [src]="product['Ảnh sản phẩm'][0]" [alt]="product['Tên sản phẩm']"></div>
+                      <div class="product-name">
+                      <a  style="cursor:pointer; ">{{ product["Tên sản phẩm"] }}</a></div>
+
+                  </td>
+              </tr>
+                  <tr>
+                  <td><div class="rate">
+                      <p>{{ product["Đánh giá"] }}  </p>⭐ </div></td>
+              </tr>
+          </table>
+         <div class="price-tag">{{ product["Giá hiện tại"] }}</div> 
+         <div class="discount"> {{ product.discountedPrice | number }}đ</div>   
+       </div>
+      </div>
+  </div>
+<br/><br/>
+<h3>ƯU ĐÃI TRỌN BỘ - GIẢM ĐẾN 50%</h3>
+<div class="category-grid">
+  <div class="category-item" *ngFor="let category of categories" (click)="navigateTo(category.link)">
+    <img [src]="category.image" [alt]="category.name">
+    <div class="category-overlay">
+      <span class="category-name">{{ category.name }}</span>
+    </div>
+  </div>
+</div>

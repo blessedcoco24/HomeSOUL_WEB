@@ -1,0 +1,124 @@
+ 
+<!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <h1>QUẢN LÍ SẢN PHẨM</h1>
+      </header>
+      
+      <!-- Main Content Area -->
+      <main class="content">
+        <!-- Search & Filter -->
+        <div class="filters">
+          <div class="filter-group">
+            <label>Từ khóa</label>
+            <input type="text" [(ngModel)]="searchKeyword" placeholder="bàn ăn">
+          </div>
+          <div class="filter-group">
+            <label>Danh mục</label>
+            <div class="select-container">
+              <select [(ngModel)]="selectedCategory" (change)="searchProducts()">
+                <option value="">Tất cả</option> <!-- Thêm tùy chọn "Tất cả" -->
+                <option *ngFor="let category of categoryNames | keyvalue" [value]="category.value">
+                  {{ category.value }}
+                </option>
+              </select>
+              
+              <div class="select-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="filter-group">
+            <label>Mã</label>
+            <input type="text" [(ngModel)]="searchCode" placeholder="SKU">
+          </div>
+          <div class="filter-actions">
+             <button class="btn btn-primary" (click)="searchProducts()">Tìm kiếm</button>
+            <!--<button class="btn btn-primary" (click)="addNewProduct()">Thêm</button> -->
+            <!-- Nút thêm sản phẩm -->
+            <button class="btn btn-primary" (click)="openAddOptions()">Thêm</button>
+
+            <!-- Hộp thoại chọn hành động -->
+            <div *ngIf="showAddOptions" class="modal">
+              <div class="modal-content">
+                <h3>Bạn muốn thêm gì?</h3>
+                <button (click)="navigateToAddProduct()">Thêm sản phẩm</button>
+                <button (click)="navigateToAddCategory()">Thêm danh mục</button>
+                <button (click)="closeAddOptions()">Hủy</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- Products Table -->
+        <div class="table-container">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>
+                  <div class="custom-checkbox" [ngClass]="{'checked': allSelected}" (click)="toggleSelectAll()"></div>
+                </th>
+                <th>Ảnh</th>
+                <th>Tên</th>
+                <th>Mã</th>
+                <th>Danh mục</th>
+                <th>Giá</th>
+                <th>Hành động</th>
+                <th>Hiện/Ẩn</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of filteredProducts" class="table-row" [ngClass]="{'hidden': !product.isVisible, 'editing': product.isEditing}">
+                <td>
+                  <div class="custom-checkbox" [ngClass]="{'checked': product.selected}" (click)="toggleProductSelection(product)"></div>
+                </td>
+                <td>
+                  <div class="product-image">
+                    <img [src]="product['Ảnh sản phẩm']?.[1]" alt="{{product.name}}">
+                  </div>
+                </td>
+                <td class="name" *ngIf="!product.isEditing"><a [routerLink]="['/sanpham', product._id]">
+                  {{ product['Tên sản phẩm'] }}
+                </a></td>
+        <td *ngIf="product.isEditing"><input [(ngModel)]="product['Tên sản phẩm']" class="form-control edit-input"/></td>
+        <td *ngIf="!product.isEditing">{{ product['SKU'] }}</td>
+        <td *ngIf="product.isEditing"><input [(ngModel)]="product['SKU']" class="form-control edit-input" /></td>
+        <td><ng-container  *ngIf="!product.isEditing"> {{ getProductCategory(product) }}</ng-container>
+         <ng-container *ngIf="product.isEditing"><input type="text" class="form-control edit-input" value="{{ getProductCategory(product) }}"/></ng-container>
+        </td>
+        <td *ngIf="!product.isEditing">{{ product['Giá hiện tại'] }}</td>
+        <td *ngIf="product.isEditing"><input type="number" [(ngModel)]="product['Giá hiện tại']" class="form-control edit-input"/></td>
+                <!-- <td class="text-center"> -->
+                  
+  <td class="text-center">
+    <ng-container *ngIf="!product.isEditing">
+      <button class="btn btn-edit" (click)="editSingleProduct(product)">Sửa</button>
+    </ng-container>
+    
+    <ng-container *ngIf="product.isEditing">
+      <!-- <button class="btn btn-save" (click)="saveSingleProduct(product)"> -->
+        <button class="btn btn-save" (click)="submitProduct(product)">
+        <i class="fas fa-save"></i> Lưu
+      </button>
+      <button class="btn btn-cancel" (click)="cancelEditSingleProduct(product)">
+        <i class="fas fa-times"></i> Hủy
+      </button>
+    </ng-container>
+  </td>
+
+                  <td>
+                  <button class="btn btn-visibility" (click)="toggleProductVisibility(product)" title="Ẩn/Hiện sản phẩm">
+                    <i class="fas" [ngClass]="product.isVisible ? 'bi bi-eye' : 'bi bi-eye-slash'"></i>
+                  </button>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  <!-- </div> -->
